@@ -1,0 +1,82 @@
+<html>
+<head><title>Carrito de Compra</title>
+<link rel="stylesheet" href="Estilos5.css" type="text/css">
+<script type="text/javascript">
+window.onload=ver;
+function ver(){
+    cesta.innerHTML="";
+    if(sessionStorage.length==0)
+        cesta.innerHTML="<h5>No tienes productos en el carrito</h5>";
+    else {
+        cesta.innerHTML="<table class='pro'width=90%><tr><th>PRO</th><th align=center>UNDS</th><th>ELIMINAR</th></tr></table>";
+        for(i=0;i<sessionStorage.length;i++)
+            cesta.innerHTML+="<table class='pro' width=90%><tr><td><td>"+
+                sessionStorage.key(i)+"</td><td>"+
+                    sessionStorage.getItem(sessionStorage.key(i))+
+                    "</td><td><img src='Pccomponentes/papelera.png' onclick=borrar('"+sessionStorage.key(i)+"')></td></tr></table>";
+
+    }
+}
+function borrar(codigo){
+    if(sessionStorage.getItem(codigo)==1)
+        sessionStorage.removeItem(codigo);
+    else
+        sessionStorage.setItem(codigo,parseInt(sessionStorage.getItem(codigo))-1);
+    ver();
+}
+function almacenar(codigo){
+    if(sessionStorage.getItem(codigo)==null)
+        sessionStorage.setItem(codigo,1);
+    else
+        sessionStorage.setItem(codigo,parseInt(sessionStorage.getItem(codigo))+1);
+    ver();
+}    
+</script>
+</head>
+<body>
+<div id="principal">
+    <h1>TIENDA ONLINE</h1>
+    <div id="productos">
+        <table>
+            <tr><th>IMAGEN</th><th>DESCRIPCION</th><th>COMPRAR</th></tr>
+            <tr>
+                <td><img src="Pccomponentes/RAM.png"></td>
+                <td><span id="d1">Memoria RAM</span></td>
+                <td><input type="button" value="comprar" onclick="almacenar('RAM')"></td>
+            </tr>
+            <tr>
+                <td><img src="Pccomponentes/Procesador.png"></td>
+                <td><span id="d2">Procesador</span></td>
+                <td><input type="button" value="comprar" onclick="almacenar('Procesador')"></td>
+            </tr>
+            <tr>
+                <td><img src="Pccomponentes/Fuente.png"></td>
+                <td><span id="d3">Fuente</span></td>
+                <td><input type="button" value="comprar" onclick="almacenar('Fuente')"></td>
+            </tr>
+            <tr>
+                <td><img src="Pccomponentes/Pantalla.png"></td>
+                <td><span id="d4">Pantalla</span></td>
+                <td><input type="button" value="comprar" onclick="almacenar('Pantalla')"></td>
+            </tr>
+            <tr>
+                <td><img src="Pccomponentes/SSD.png"></td>
+                <td><span id="d5">Memoria SSD</span></td>
+                <td><input type="button" value="comprar" onclick="almacenar('SSD')"></td>
+            </tr>
+            <tr>
+                <td><img src="Pccomponentes/Placa.png"></td>
+                <td><span id="d6">Placa Base</span></td>
+                <td><input type="button" value="comprar" onclick="almacenar('Placa')"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="carrito">
+        <h4>este es el estado del carrito</h4>
+        <div id="cesta"></div>
+        <div id="total"></div>
+    </div>
+    <div id="pie"></div>
+</div>    
+</body>
+</html>

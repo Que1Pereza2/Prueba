@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head><title>marcas html5 para un folmulario</title>
+<script type="javascript/text" src="jquery-1.11.2.min.js"></script>
+<script>
+    function mostrarEdad(valor){
+        verEdad.innerHTML=valor;
+    }
+</script>
+</head>
+<body>
+<form action="">
+    <h2>Formularion HTML5</h2>
+        <p>
+            nombre:<input type="text" name="nombre" autofocus required>
+        </p>
+        <p>
+            E-mail:<input type="email" name="email" placeholder="Introduzca su email...">
+        </p>
+        <p>
+            Edad:<input type="range" min="18" max="70" value="35" name="edad" 
+            onchange="mostrarEdad(this.value)"><span id="verEdad">35</span>
+        </p>
+        <p>
+            Color favorito:<input type="color" name="color">
+        </p>
+        <p>
+            Web:<input type="url" name="web" autocomplete="on">
+        </p>
+        <p>
+            Nr. par de 0 a 10:<input type="number" name="par" min="0" max="10" step="2">
+        </p>
+        Destinatario:<input type="email" name="destinatario" list="listaDestinatarios" required>
+
+            <datalist id="listaDestinatarios">
+                <option value="admin@salesianos.edu">administrador</option>
+                <option value="augustin.sole@salesianos.edu">Augustin Sole</option>
+                <option value="gorka.sanz@salesianos.edu">Gorka Sanz</option>
+            </datalist>
+        </p>
+        <p>
+            <input type="submit">
+        </p>
+      
+</form>
+</body>
+</html>

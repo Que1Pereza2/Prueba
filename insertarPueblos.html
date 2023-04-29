@@ -1,0 +1,67 @@
+<!-- insertar -->
+<html>
+
+<head>
+    <title>Formulario insercion pueblos</title>
+    <script type="application/javascript">
+        var db;
+        function cargar() {
+            db = openDatabase("Pueblos", "1.0", "Comentario sobre DB", 2 * 1024 * 1024);
+            db.transaction(function (tx) {
+                tx.executeSql("CREATE TABLE IF NOT EXISTS HABITANTES(nombre unique,numero)");
+
+            });
+            alert();
+            mostrar();
+        }
+        function insertar() {
+            db.transaction(function (tx) {
+                tx.executeSql("INSERT INTO HABITANTES(nombre,numero) VALUES('" + ciudad.value + "'," + num.value + ")");
+            });
+            alert();
+            formulario.submit();
+        }
+        function mostrar() {
+            db.transaction(function (tx) {
+                tx.executeSql("SELECT * FROM HABITANTES ORDER BY numero desc", [], function (tx, resultados) {
+                    var len = resultados.rows.length;
+                    msg = "<table align=center border=1 width=300>";
+                    for (i = 0; i < len; i++) {
+                        msg += "<tr><td>" + resultados.rows.item(i).nombre + "</td><td> " + resultados.rows.item(i).numero + "</td><td><input type=button value='Eliminar' onclick='eliminar(\"" + resultados.rows.item(i).nombre + "\")'></td></tr>";
+                    }
+                    estado.innerHTML += msg;
+                });
+            });
+        }
+        function eliminar(ciuda) {
+            alert(ciuda);
+            db.transaction(function (tx) {
+                tx.executeSql("DELETE FROM HABITANTES WHERE nombre='" + ciuda + "'");
+            });
+            formulario.submit();
+        }
+    </script>
+</head>
+
+<body onload="cargar()">
+    <form id="formulario" method="post">
+        <table align="center">
+            <tr>
+                <th>Ciudad</th>
+                <th>N. Habitantes</th>
+            </tr>
+            <tr>
+                <td><input id="ciudad" name="ciudad"></td>
+                <td><input id="num" name="num"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="button" value="Insertar" onclick="insertar()"></td>
+            </tr>
+        </table>
+    </form>
+
+    <div id="estado" name="estado"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<html>
+<head><title>Data de datos SQLite</title>
+</head>
+<script type="application/javascript">
+    function cargar(){
+        var db=openDatabase("MiBaseDatos","1.0","Comentario sobre DB",2*1024*1024);
+        db.transaction(function(tx){
+            tx.executeSql("CREATE TABLE IF NOT EXISTS DATOS(codigo unique,nombre)");
+            tx.executeSql("INSERT INTO DATOS(codigo,nombre) VALUES(1,'Pepe')");
+            tx.executeSql("INSERT INTO DATOS(codigo,nombre) VALUES(2,'Juan')");
+        });
+    }
+
+</script>
+<body onload="cargar()">
+    
+</body>
+</html>

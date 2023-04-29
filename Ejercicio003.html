@@ -1,0 +1,36 @@
+<html >
+<head><title>Editor con HTML5</title>
+<link rel="stylesheet" href="Estilos3.css">
+<script language="JavaScript" src="editor.js"></script>
+
+
+</head>
+<body>
+    <div id="principal">
+        <h2>Mensajes publicados</h2>
+        <div id="mensajes"></div>
+        <div id="editor">
+            <h3>Publica aqui tu mensaje</h3>
+            <div id="botones">
+                <img src="iconos/negrita.jpg" class="boton" onclick="negrita()">
+                <img src="iconos/cursiva.jpg" class="boton"onclick="cursiva()">
+                <img src="iconos/subrayado.jpg" class="boton" onclick="subrayado()">
+                <img src="iconos/alini.jpg" class="boton" onclick="alini()">
+                <img src="iconos/alinc.jpg" class="boton" onclick="alinc()">
+                <img src="iconos/alind.jpg" class="boton" onclick="alind()">
+                <img src="iconos/alinf.jpg" class="boton" onclick="alinf()">
+                <img src="iconos/lno.jpg" class="boton" onclick="lno()">
+                <img src="iconos/lor.jpg" class="boton" onclick="lor()">
+                <img src="iconos/subi.jpg" class="boton" onclick="subi()">
+                <img src="iconos/supi.jpg" class="boton" onclick="supi()">
+                <img src="iconos/fco.jpg" class="boton" onclick="fco()">
+                <img src="iconos/bco.jpg" class="boton" onclick="bco()">
+                <img src="iconos/imagen.jpg" class="boton" onclick="imagen()">
+                <img src="iconos/hipervinculo.jpg" class="boton" onclick="hipervinculo()">
+            </div>
+            <div id="contenido" contenteditable="true"></div>
+            <input type="button" value="PUBLICAR" onclick="publicar()">
+        </div>
+    </div>
+</body>
+</html>

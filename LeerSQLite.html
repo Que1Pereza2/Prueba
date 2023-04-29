@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leer datos de SQLite</title>
+    <script type="application/javascript">
+        function leer(){
+            var db=openDatabase("MiBaseDatos","1.0","Comentario sobre BD",2*1024*1024);
+            db.transaction(function(tx){
+                tx.executeSql("SELECT * FROM DATOS",[],function(tx,resultados){
+                    var len=resultados.rows.length;
+                    msg="<p>Numero de filas: "+len+"</p>";
+                    estado.innerHTML=msg;
+                    for(i=0;i<len;i++){
+                        msg+="<p><b>"+resultados.rows.item(i).codigo+"<b>-"+resultados.rows.item(i).no;
+                    }
+                    estado.innerHTML+=msg;
+                })
+            })
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
