@@ -21,10 +21,10 @@
             alert();
             formulario.submit();
         }
-        function mostrar() {
+        let mostrar = () => { //forma declarar funciones, creo que en metodos constructores no va
             db.transaction(function (tx) {
                 tx.executeSql("SELECT * FROM HABITANTES ORDER BY numero desc", [], function (tx, resultados) {
-                    var len = resultados.rows.length;
+                    let len = resultados.rows.length; //let = var
                     msg = "<table align=center border=1 width=300>";
                     for (i = 0; i < len; i++) {
                         msg += "<tr><td>" + resultados.rows.item(i).nombre + "</td><td> " + resultados.rows.item(i).numero + "</td><td><input type=button value='Eliminar' onclick='eliminar(\"" + resultados.rows.item(i).nombre + "\")'></td></tr>";
